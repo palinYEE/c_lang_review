@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include"IntQueue.h"
+#include"yyjIntQueue.h"
 
 // 큐 초기화
 int Initialize(IntQueue *q, int max){

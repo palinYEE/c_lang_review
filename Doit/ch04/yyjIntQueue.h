@@ -1,5 +1,5 @@
-#ifndef __IntQueue
-#define __IntQueue
+#ifndef __yyjIntQueue
+#define __yyjIntQueue
 
 typedef struct 
 {
