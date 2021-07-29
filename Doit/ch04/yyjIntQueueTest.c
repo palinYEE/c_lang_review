@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include"IntQueue.h"
+#include"yyjIntQueue.h"
 
 int main(){
     IntQueue q;
