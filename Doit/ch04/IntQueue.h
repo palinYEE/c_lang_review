@@ -17,7 +17,7 @@ int Initialize(IntQueue *q, int max);
 int Enqueue(IntQueue *q, int x);
 
 // 디큐
-int Dequeue(IntQueue *q, int x);
+int Dequeue(IntQueue *q, int *x);
 
 // 피크
 int Peek(IntQueue *q, int *x);
