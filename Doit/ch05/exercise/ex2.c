@@ -13,7 +13,12 @@ void recur3_pro1(int n){
     Top:
     if(n > 0){
         Push(&stk, n);
+        n = n-2;
         goto Top;
+    }
+    if(!IsEmpty(&stk)){
+        n = n + 3;
+        
     }
 }
 
