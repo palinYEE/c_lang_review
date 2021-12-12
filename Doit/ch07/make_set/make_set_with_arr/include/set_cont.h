@@ -9,6 +9,7 @@ struct set_cont
 };
 typedef struct set_cont SET_CONT;
 
+
 #define OK 1    /* 성공 */
 #define NO -1    /* 실패 */
 

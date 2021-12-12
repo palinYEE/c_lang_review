@@ -16,7 +16,7 @@ int Initialize(SET_CONT *s, int max);
  * @brief 집합 s에 n이 들어있는지 확인
  * @param s 집합을 관리하는 구조체의 포인터
  * @param n 집합에 들어가있는지 확인할 원소
- * @return n 값이 집합에 들어있는지 여부 
+ * @return n 값이 집합에 들어있으면 idx 값을 리턴, 그렇지 않으면 NO 
 */
 int IsMember(const SET_CONT *s , int n);
 

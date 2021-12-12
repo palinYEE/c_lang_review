@@ -17,7 +17,7 @@ int IsMember(const SET_CONT *s , int n){
     int i;
     for(i = 0; i < s->max; i++){
         if(n == s->set[i]){
-            return OK;
+            return i;
         }
     }
     return NO;
