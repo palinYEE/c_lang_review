@@ -7,9 +7,9 @@ TMP_HEADER2="tmp"
 
 # SETTING VALUE
 SOLV_DATE="$1"
-PROB_content="숫자 야구 게임"
-EX_input="answer = [1,2,3], user = [1,3,0]"
-EX_output="strike: 1, ball: 1"
+PROB_content="랜덤 주사위(1 ~ 6)를 돌려서 각 숫자의 출현 횟수를 출력한다. "
+EX_input="None"
+EX_output="1번 : 19 2번 : 20 ... "
 
 # DEFINITION VALUE SETTING
 definition_setting()

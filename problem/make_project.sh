@@ -22,4 +22,3 @@ touch source/problem.c
 echo "[*] make directory : $projectName/source/problem.c"
 echo "================================"
 echo "Let's study c language :)"
-
