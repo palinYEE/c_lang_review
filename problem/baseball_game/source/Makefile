@@ -1,4 +1,4 @@
-CC = gcc
+CC = gcc -m64
 CFLAGS = -I../include
 CFLAGS += -Wall -O2
 OBJS = problem.o yj_time.o main.o
@@ -10,7 +10,7 @@ $(TARGET) : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 .c.o:
-    $(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $<
 
 clean:
 	rm *.o

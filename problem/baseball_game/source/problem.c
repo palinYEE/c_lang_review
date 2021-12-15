@@ -3,6 +3,10 @@
 #include "problem.h"
 #include "yj_time.h"
 
+/* ------------- */
+// global header
+#include <stdlib.h>
+
 void print_prob_info(){
     printf("@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
     printf("@                        @\n");
@@ -32,13 +36,14 @@ int search_baseball(int *arr, int num, int num_index){
     return ret;
 }
 
-void sol(){
+void baseball_game(){
     /* value setting */
     int baseball_answer[3] = {0, };        // baseball answer
     int user_answer[3] = {0, };            // user answer
-    int ball_count, strike_count;          // ball and strike count value
+    int ball_count, strike_count, try_count=0;          // ball and strike count value and try count value
     int i;                                 // loop value
     int temp = 0;                          // temp value
+    char user_check = '\0';                       // user yes or no
 
     /* check time to start playing */
     yj_time_print();
@@ -51,11 +56,29 @@ void sol(){
 
     /* game start */
     while(1){
+        /* hint */
+        if(try_count == 6){
+            printf("hint! : first value is %d\n", baseball_answer[0]);
+        }else if(try_count == 10){
+            printf("hint : secont value is %d\n", baseball_answer[1]);
+        }else if(try_count > 15){
+LOSE:
+            printf("you lose... answer is ");
+            for(i=0; i<3; i++){
+                printf("%d ", baseball_answer[i]);
+            }
+            printf("\n");
+            break;
+        }
+
+        /* count value setting */
+        try_count += 1;
         ball_count = 0; strike_count = 0;
 
+        printf("===============================\n");
         for(i=0; i<3; i++){
             printf("[%d] Input user answer : ", i);
-            scanf("%d", *(user_answer + i));
+            scanf("%d", user_answer + i);
         }
 
         for(i=0; i<3; i++){
@@ -70,7 +93,16 @@ void sol(){
         }
         printf(" -- result : %d strike %d ball\n ", strike_count, ball_count);
         if(strike_count == 3){
+            printf("you win!!!\n");
             break;
         }
+        printf("Do you want to show answer? (y/n): ");
+        fflush(stdin);
+        scanf("%c", &user_check);
+
+        if(user_check == 'y'){
+            goto LOSE;
+        }
+
     }
 }
