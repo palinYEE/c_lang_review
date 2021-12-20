@@ -60,5 +60,23 @@ void find_data_from_name(PHONE_BOOK_ST *start, char *name, int count);
  * @param count 전화번호부에 입력되어있는 데이터 개수
  */
 void find_data_from_phone_number(PHONE_BOOK_ST *start, char *phone_number, int count);
+
+/**
+ * @brief 전화번호 목록 저장
+ * 
+ * @param start 시작 구조체
+ * @param filename 파일 이름
+ * @param count 전화번호부에 입력되어있는 데이터 개수
+ */
+void save_phone_book(PHONE_BOOK_ST *start, char *filename, int *count);
+
+
+/**
+ * @brief 전화번호 목록 불러오기
+ * 
+ * @param start 시작 구조체
+ * @param filename 파일 이름
+ */
+void load_phone_book(PHONE_BOOK_ST *start, char *filename);
 #else
 #endif

@@ -2,6 +2,7 @@
 #include "yj_utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <memory.h>
 
 void print_phone_st(PHONE_BOOK_ST *in){
@@ -94,4 +95,34 @@ void find_data_from_phone_number(PHONE_BOOK_ST *start, char *phone_number, int c
     if(flag == 0){
         printf("데이터가 존재하지 않습니다. \n");
     }
+}
+
+void save_phone_book(PHONE_BOOK_ST *start, char *filename, int *count){
+    FILE *fp;
+    PHONE_BOOK_ST *temp = start->next;
+    int i;
+    fp = fopen(filename, "a");
+
+    for(i=1; i<=*count; i++){
+        fprintf(fp, "name: %s | phone number : %s\n",temp->name, temp->phone_number);
+        temp->name = NULL;
+        temp->phone_number = NULL;
+        temp = temp->next;
+    }
+    *count = 0;
+    fclose(fp);
+}
+
+void load_phone_book(PHONE_BOOK_ST *start, char *filename){
+    FILE *fp; 
+    char data[100];
+    char *temp;
+    int i;
+
+    fp = fopen(filename, "r");
+    while(fgets(data, sizeof(data), fp) != NULL){
+        // start->name = 
+        // start->phone_number = 
+    }
+    fclose(fp);
 }
