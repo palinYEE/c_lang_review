@@ -43,5 +43,22 @@ int delete_phone_number(PHONE_BOOK_ST *start, char *name, char * phone_number);
 void print_all_phone_number(PHONE_BOOK_ST *start, int count);
 
 
+/**
+ * @brief 이름을 기준으로 데이터를 찾는 함수
+ * 
+ * @param start 시작 구조체
+ * @param name 검색할 이름
+ * @param count 전화번호부에 입력되어있는 데이터 개수
+ */
+void find_data_from_name(PHONE_BOOK_ST *start, char *name, int count);
+
+/**
+ * @brief 전화번호를 기준으로 데이터를 찾는 함수 
+ * 
+ * @param start 시작할 구조체 
+ * @param phone_number 검색할 전화번호
+ * @param count 전화번호부에 입력되어있는 데이터 개수
+ */
+void find_data_from_phone_number(PHONE_BOOK_ST *start, char *phone_number, int count);
 #else
 #endif

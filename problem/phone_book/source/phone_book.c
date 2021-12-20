@@ -65,3 +65,33 @@ void print_all_phone_number(PHONE_BOOK_ST *start, int count){
         temp = temp->next;
     }
 }
+
+void find_data_from_name(PHONE_BOOK_ST *start, char *name, int count){
+    PHONE_BOOK_ST *temp = start->next;
+    int flag = 0;
+    for(int i=1; i<=count; i++){
+        if(yj_cmp_str(temp->name, name) == 0){
+            flag = 1;
+            print_phone_st(temp);
+        }
+        temp = temp->next;
+    }
+    if(flag == 0){
+        printf("데이터가 존재하지 않습니다. \n");
+    }
+}
+
+void find_data_from_phone_number(PHONE_BOOK_ST *start, char *phone_number, int count){
+    PHONE_BOOK_ST *temp = start->next;
+    int flag = 0;
+    for(int i=1; i<=count; i++){
+        if(yj_cmp_str(temp->phone_number, phone_number) == 0){
+            flag = 1;
+            print_phone_st(temp);
+        }
+        temp = temp->next;
+    }
+    if(flag == 0){
+        printf("데이터가 존재하지 않습니다. \n");
+    }
+}
