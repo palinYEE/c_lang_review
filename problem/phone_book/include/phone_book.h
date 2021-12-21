@@ -76,7 +76,8 @@ void save_phone_book(PHONE_BOOK_ST *start, char *filename, int *count);
  * 
  * @param start 시작 구조체
  * @param filename 파일 이름
+ * @param count 전화번호부에 기존에 입력되어있는 데이터 개수 
  */
-void load_phone_book(PHONE_BOOK_ST *start, char *filename);
+void load_phone_book(PHONE_BOOK_ST *start, char *filename, int *count);
 #else
 #endif

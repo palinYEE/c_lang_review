@@ -104,7 +104,9 @@ void save_phone_book(PHONE_BOOK_ST *start, char *filename, int *count){
     fp = fopen(filename, "a");
 
     for(i=1; i<=*count; i++){
-        fprintf(fp, "name: %s | phone number : %s\n",temp->name, temp->phone_number);
+        fprintf(fp, "%s\n", temp->name);
+        fprintf(fp, "%s\n", temp->phone_number);
+        fprintf(fp, "==\n");
         temp->name = NULL;
         temp->phone_number = NULL;
         temp = temp->next;
@@ -113,16 +115,36 @@ void save_phone_book(PHONE_BOOK_ST *start, char *filename, int *count){
     fclose(fp);
 }
 
-void load_phone_book(PHONE_BOOK_ST *start, char *filename){
+void load_phone_book(PHONE_BOOK_ST *start, char *filename,int *count){
     FILE *fp; 
     char data[100];
-    char *temp;
-    int i;
+    int flag = 0;
+    PHONE_BOOK_ST *temp = start;
+    PHONE_BOOK_ST *temp2 = start->next;
 
     fp = fopen(filename, "r");
     while(fgets(data, sizeof(data), fp) != NULL){
-        // start->name = 
-        // start->phone_number = 
+        data[strlen(data) - 1] = NULL;
+        printf("org : %s\n", data);
+        if(strcmp(data, "==")){
+            if(flag == 0 ){
+                temp2->name = data;
+                printf("temp2->name : %s\n", temp2->name
+                );
+                flag++;
+                *count = *count + 1;
+            }
+            else if(flag == 1){
+                temp2->phone_number = data;
+                printf("temp->phone_number : %s\n", temp2->phone_number);
+                flag = 0;
+                *count = *count + 1;
+
+                temp = temp2;
+                temp2 = temp2 + sizeof(PHONE_BOOK_ST);
+                temp->next = temp2; 
+            }
+        }
     }
     fclose(fp);
 }

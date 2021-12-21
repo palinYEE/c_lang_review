@@ -82,7 +82,7 @@ int main(){
         case 7:
             printf(" - 파일 이름을 입력하세요 : ");
             scanf("%s", filename);
-            load_phone_book(book_list[0], filename);
+            load_phone_book(book_list[0], filename, &count);
             break;
         default:
             printf("ERROR!! 인자 값을 잘못 입력하였습니다. \n");
