@@ -16,9 +16,9 @@ typedef struct yj_dvd_info_st
     char *ISBN;             // isbn 코드
     char *title;            // 제목
     char *genre;            // 장르
-    char *release_year      // 출시 년도
+    char *release_year;      // 출시 년도
 
-    YJ_DVD_INFO_ST *next;   // DVD 링크드 리스트
+    struct YJ_DVD_INFO_ST *next;   // DVD 링크드 리스트
 }YJ_DVD_INFO_ST;
 
 typedef struct yj_rental_info_st
@@ -32,10 +32,10 @@ typedef struct yj_rental_info_st
 
 typedef struct yj_st_manage_table
 {
-    YJ_DVD_USER_ST *user_st;            // 유저 정보 구조체 
+    struct YJ_DVD_USER_ST *user_st;            // 유저 정보 구조체 
     // YJ_DVD_INFO_ST *dvd_info_st;        // dvd 정보 관리 구조체
-    YJ_RENTAL_INFO_ST *rental_info_st;  // 대여 정보 관리 구조체
-    YJ_ST_MANAGE_TABLE *next;           // 다음 MANAGE_TABLE 링크드 리스트 
+    struct YJ_RENTAL_INFO_ST *rental_info_st;  // 대여 정보 관리 구조체
+    struct YJ_ST_MANAGE_TABLE *next;           // 다음 MANAGE_TABLE 링크드 리스트 
 }YJ_ST_MANAGE_TABLE;
 
 

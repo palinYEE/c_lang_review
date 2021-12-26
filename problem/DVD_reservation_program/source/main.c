@@ -18,8 +18,8 @@ int main()
         printf("@                                                              @\n");
         printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
         
-        printf("\n\n\t\t\t\t\t\t 1. Input User info\n");
-        printf("\t\t\t\t\t\t 2. Print user info \n");
+        printf("\n\n\t\t\t 1. Input User info\n");
+        printf("\t\t\t 2. Print user info \n");
         printf(" - Select: ");
         scanf("%d", &select);
         switch (select)

@@ -24,11 +24,11 @@ void yj_dvd_st_init(YJ_ST_MANAGE_TABLE *in)
     temp2->title = malloc(sizeof(char) * MAX_CHAR_LENGTH);
 
     /* 변수의 쓰레기 값을 정리하기 위한 변수 셋팅 */
-    memset(temp->user_name, '/0', MAX_CHAR_LENGTH);
-    memset(temp->phone_number, '/0', MAX_CHAR_LENGTH);
+    memset(temp->user_name, '0', MAX_CHAR_LENGTH);
+    memset(temp->phone_number, '0', MAX_CHAR_LENGTH);
 
-    memset(temp2->genre, '/0', MAX_CHAR_LENGTH);
-    memset(temp2->ISBN, '/0', MAX_CHAR_LENGTH);
-    memset(temp2->release_year, '/0', MAX_CHAR_LENGTH);
-    memset(temp2->title, '/0', MAX_CHAR_LENGTH);
+    memset(temp2->genre, '0', MAX_CHAR_LENGTH);
+    memset(temp2->ISBN, '0', MAX_CHAR_LENGTH);
+    memset(temp2->release_year, '0', MAX_CHAR_LENGTH);
+    memset(temp2->title, '0', MAX_CHAR_LENGTH);
 }
