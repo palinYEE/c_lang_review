@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -I../include
 CFLAGS += -Wall -O2
-OBJS = dvd_init.o dvd_user.o main.o
+OBJS = dvd_init.o dvd_user.o dvd_server.o main.o
 TARGET = dvd_management_program
 
 all : $(TARGET)

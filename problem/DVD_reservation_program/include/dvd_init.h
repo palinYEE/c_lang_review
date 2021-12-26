@@ -13,7 +13,7 @@ typedef struct yj_dvd_user_st
 
 typedef struct yj_dvd_info_st
 {
-    char *ISBN;             // isbn 코드
+    int ISBN;             // isbn 코드  <-- 이거는 6자리 숫자 랜덤 값으로 셋팅하자.
     char *title;            // 제목
     char *genre;            // 장르
     char *release_year;      // 출시 년도
@@ -38,8 +38,19 @@ typedef struct yj_st_manage_table
     struct YJ_ST_MANAGE_TABLE *next;           // 다음 MANAGE_TABLE 링크드 리스트 
 }YJ_ST_MANAGE_TABLE;
 
-
+/**
+ * @brief 유저가 사용하는 구조체를 셋팅해주는 함수
+ * 
+ * @param in 유저 전용 구조체 (YJ_ST_MANAGE_TABLE)
+ */
 void yj_dvd_st_init(YJ_ST_MANAGE_TABLE *in);
+
+/**
+ * @brief dvd server 전용 구조체를 셋팅해주는 함수
+ * 
+ * @param in dvd 전용 구조체 (YJ_DVD_INFO_ST)
+ */
+void yj_dvd_server_init(YJ_DVD_INFO_ST *in);
 
 #else
 #endif

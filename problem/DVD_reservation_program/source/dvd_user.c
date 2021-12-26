@@ -34,4 +34,9 @@ void input_user_data(YJ_DVD_USER_ST *in)
 FAIL:;
 }
 
+void input_rent_info(YJ_DVD_INFO_ST *in)
+{
+    printf(" - 빌릴 책 이름을 입력하세요 : ");
+    scanf("%s", in->title);
+}
 
