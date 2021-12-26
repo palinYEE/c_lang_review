@@ -5,11 +5,16 @@
 
 int main()
 {
-    YJ_ST_MANAGE_TABLE *dvd_table;
+    YJ_ST_MANAGE_TABLE *dvd_table[MAX_TABLE_SIZE];
+
     int select = 0;
     int table_count = 0;
+    int i;
 
-    dvd_table = malloc(sizeof(YJ_ST_MANAGE_TABLE) * MAX_TABLE_SIZE);
+    for(i=0; i<MAX_TABLE_SIZE; i++){
+        dvd_table[i] = malloc(sizeof(YJ_ST_MANAGE_TABLE) * MAX_TABLE_SIZE);
+        yj_dvd_st_init(dvd_table[i]);
+    }
     while(1)
     {
         printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
@@ -25,11 +30,13 @@ int main()
         switch (select)
         {
         case 1:
-            input_user_data((dvd_table + table_count)->user_st);
+            input_user_data(dvd_table[table_count]->user_st);
             table_count += 1;
             break;
         case 2:
-            print_user_list(dvd_table);
+            for(i=0; i<table_count; i++){
+                print_user_list(dvd_table[i]);
+            }
             break;
         default:
             goto FIN;
@@ -37,6 +44,9 @@ int main()
         }
     }
 FIN:;
+    for(i=0; i<MAX_TABLE_SIZE; i++){
+        free(dvd_table[i]);
+    }
     return 0;
 
 }

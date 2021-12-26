@@ -32,3 +32,4 @@ void yj_dvd_st_init(YJ_ST_MANAGE_TABLE *in)
     memset(temp2->release_year, '0', MAX_CHAR_LENGTH);
     memset(temp2->title, '0', MAX_CHAR_LENGTH);
 }
+
