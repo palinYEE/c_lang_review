@@ -17,5 +17,12 @@ void print_user_list(YJ_ST_MANAGE_TABLE *in);
  */
 void input_user_data(YJ_DVD_USER_ST *in);
 
+/**
+ * @brief 유저 정보 삭제 함수
+ * 
+ * @param in 삭제할 유저 구조체
+ * @param count 전체 유저 개수
+ */
+void delete_user_data(YJ_DVD_USER_ST *in, int *count);
 #else
 #endif
