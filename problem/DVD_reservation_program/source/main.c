@@ -13,7 +13,7 @@ void print_logo()
     printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
 }
 
-void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table_count)
+void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *table_count)
 {
     int select = 0;
     /* 찾을 데이터를 저장하는 변수 */
@@ -33,6 +33,7 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table
         printf("\t\t\t 3. Find user data from name\n");
         printf("\t\t\t 4. Find user data from phone number\n");
         printf("\t\t\t 5. Delete user data\n");
+        printf("\t\t\t 6. Rental dvd\n");
         printf("\t\t\t 0. Back\n");
         printf(" - Select: ");
         scanf("%d", &select);
@@ -41,13 +42,16 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table
         case 1:
             input_user_data(dvd_user_table[*table_count]->user_st);
             *table_count += 1;
+            system("clear");
             break;
         case 2:
+            system("clear");
             for(i=0; i<*table_count; i++){
                 print_user_list(dvd_user_table[i]);
             }
             break;
         case 3:
+            system("clear");
             printf(" - 이름을 입력하세요 : ");
             scanf("%s", find_name);
             index_find_name = find_user_data_from_name(dvd_user_table, table_count, find_name);
@@ -58,6 +62,7 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table
             }
             break;
         case 4:
+            system("clear");
             printf(" - 전화번호를 입력하세요 : ");
             scanf("%s", find_phone_number);
             index_find_phone_number = find_user_data_from_phone_number(dvd_user_table, table_count, find_phone_number);
@@ -68,12 +73,31 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table
             }
             break;
         case 5:
+            system("clear");
             printf(" - 이름을 입력하세요 : ");
             scanf("%s", find_name);
             index_find_name = find_user_data_from_name(dvd_user_table, table_count, find_name);
-            delete_user_data(dvd_user_table, table_count, index_find_name);
+            if(index_find_name == NOT_FOUND){
+                printf("    - 해당 이름은 존재하지 않습니다. \n");
+            }
+            else{
+                delete_user_data(dvd_user_table, table_count, index_find_name);
+            }
+            break;
+        case 6:
+            system("clear");
+            printf(" - 빌릴 사람의 이름을 입력하세요 : ");
+            scanf("%s", find_name);
+            index_find_name = find_user_data_from_name(dvd_user_table, table_count, find_name);
+            if(index_find_name == NOT_FOUND){
+                printf("    - 해당 이름은 존재하지 않습니다. \n");
+            }
+            else{
+            input_rent_info(dvd_user_table[index_find_name], dvd_root_table);
+            }
             break;
         case 0:
+            system("clear");
             goto USER_FIN;
         default:
             goto USER_FIN;
@@ -100,15 +124,18 @@ void yj_root_mode(YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *table_count)
         switch (select)
         {
         case 1:
+            system("clear");
             input_dvd_data(dvd_root_table[*table_count]);
             *table_count += 1;
             break;
         case 2:
+            system("clear");
             for(i=0; i<*table_count; i++){
                 print_dvd_list(dvd_root_table[i]);
             }
             break;
         case 0:
+            system("clear");
             goto ROOT_FIN;
         default:
             goto ROOT_FIN;
@@ -124,6 +151,8 @@ int main()
     int user_table_count = 0;
     int root_table_count = 0;
     int i;
+
+    system("clear");
 
     YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE];
     YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM];
@@ -149,9 +178,11 @@ int main()
         switch (select_main_menu)
         {
         case 1:
-            yj_user_mode(dvd_user_table, &user_table_count);
+            system("clear");
+            yj_user_mode(dvd_user_table, dvd_root_table, &user_table_count);
             break;
         case 2:
+            system("clear");
             yj_root_mode(dvd_root_table, &root_table_count);
             break;
         case 0:

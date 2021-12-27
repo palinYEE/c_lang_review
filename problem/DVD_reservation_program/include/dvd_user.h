@@ -2,6 +2,7 @@
 #define DVD_USER_H
 
 #include "dvd_init.h"
+#include "dvd_server.h"
 
 #define NOT_FOUND -1
 
@@ -48,5 +49,15 @@ int find_user_data_from_name(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE],
  * @return int 찾을 유저 데이터가 있는 인덱스 (만약 데이터가 없으면 NOT_FOUND 가 반환)
  */
 int find_user_data_from_phone_number(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE],int *count ,char *find_phone_number);
+
+
+/**
+ * @brief dvd 빌리는 함수
+ * 
+ * @param in 빌릴 사람에 대한 구조체
+ * @param dvd_root_table dvd 구조체 테이블
+ */
+void input_rent_info(YJ_ST_MANAGE_TABLE *in, YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM]);
+
 #else
 #endif

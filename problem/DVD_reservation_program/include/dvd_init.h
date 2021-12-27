@@ -24,7 +24,6 @@ typedef struct yj_dvd_info_st
 typedef struct yj_rental_info_st
 {
     char *title;            // DVD 제목
-    char *user_name;        // 대여자 이름
     char *rental_date;      // 대여 날짜
     char *return_date;      // 반납 날짜
     char *lotus_check;      // 연채 여부

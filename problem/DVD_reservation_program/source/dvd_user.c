@@ -1,7 +1,9 @@
 #include "dvd_user.h"
+#include "yj_utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 void print_user_list(YJ_ST_MANAGE_TABLE *in)
 {
@@ -55,7 +57,6 @@ void delete_user_data(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *c
     memset(temp->phone_number, '0', MAX_CHAR_LENGTH);
 
     memset(temp2->title, '0', MAX_CHAR_LENGTH);
-    memset(temp2->user_name, '0', MAX_CHAR_LENGTH);
     memset(temp2->rental_date, '0', MAX_CHAR_LENGTH);
     memset(temp2->return_date, '0', MAX_CHAR_LENGTH);
     memset(temp2->lotus_check, '0', MAX_CHAR_LENGTH);
@@ -89,9 +90,24 @@ int find_user_data_from_phone_number(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABL
     return NOT_FOUND;
 }
 
-void input_rent_info(YJ_DVD_INFO_ST *in)
+void input_rent_info(YJ_ST_MANAGE_TABLE *in, YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM])
 {
+    int i;
+
+    YJ_RENTAL_INFO_ST *temp = in->rental_info_st;
+
     printf(" - 빌릴 책 이름을 입력하세요 : ");
-    scanf("%s", in->title);
+    scanf("%s", temp->title);
+
+    for(i=0; i<MAX_DVD_NUM; i++){
+        if(strcmp(temp->title, dvd_root_table[i]->title) == 0){
+            yj_now_time_str(temp->rental_date);
+            temp->lotus_check = "N";
+            break;
+        }
+    }
+    if(i >= MAX_DVD_NUM){
+        printf(" - 해당 책이 존재하지 않습니다. \n");
+    }
 }
 
