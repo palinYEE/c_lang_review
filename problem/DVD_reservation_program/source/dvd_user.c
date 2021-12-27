@@ -1,6 +1,7 @@
 #include "dvd_user.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void print_user_list(YJ_ST_MANAGE_TABLE *in)
 {
@@ -32,6 +33,60 @@ void input_user_data(YJ_DVD_USER_ST *in)
         goto FAIL;
     }
 FAIL:;
+}
+
+void delete_user_data(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *count, int delete_index)
+{
+    YJ_ST_MANAGE_TABLE *swap_temp;
+    if(delete_index != *count){
+        swap_temp = dvd_user_table[*count];
+        dvd_user_table[*count] = dvd_user_table[delete_index];
+        dvd_user_table[delete_index] = swap_temp;
+    }
+
+    YJ_DVD_USER_ST *temp;
+    YJ_RENTAL_INFO_ST *temp2;
+
+    temp = dvd_user_table[*count]->user_st;
+    temp2 = dvd_user_table[*count]->rental_info_st;
+
+    /* 제로화 */
+    memset(temp->user_name, '0', MAX_CHAR_LENGTH);
+    memset(temp->phone_number, '0', MAX_CHAR_LENGTH);
+
+    memset(temp2->title, '0', MAX_CHAR_LENGTH);
+    memset(temp2->user_name, '0', MAX_CHAR_LENGTH);
+    memset(temp2->rental_date, '0', MAX_CHAR_LENGTH);
+    memset(temp2->return_date, '0', MAX_CHAR_LENGTH);
+    memset(temp2->lotus_check, '0', MAX_CHAR_LENGTH);
+
+    *count--;
+}
+
+int find_user_data_from_name(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *count ,char *find_name)
+{
+    int i;
+    YJ_DVD_USER_ST *temp; 
+    for(i=0; i<*count; i++){
+        temp = dvd_user_table[i]->user_st;
+        if(strcmp(temp->user_name, find_name) == 0){
+            return i;
+        }
+    }
+    return NOT_FOUND;
+}
+
+int find_user_data_from_phone_number(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE],int *count ,char *find_phone_number)
+{
+    int i;
+    YJ_DVD_USER_ST *temp;
+    for(i=0; i<*count; i++){
+        temp = dvd_user_table[i]->user_st;
+        if(strcmp(temp->phone_number, find_phone_number) == 0){
+            return i;
+        }
+    }
+    return NOT_FOUND;
 }
 
 void input_rent_info(YJ_DVD_INFO_ST *in)

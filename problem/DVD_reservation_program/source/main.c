@@ -16,6 +16,12 @@ void print_logo()
 void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table_count)
 {
     int select = 0;
+    /* 찾을 데이터를 저장하는 변수 */
+    int find_name[MAX_CHAR_LENGTH] = {0,};
+    int index_find_name;
+    int find_phone_number[MAX_CHAR_LENGTH] = {0, };
+    int index_find_phone_number;
+    /* loop value */
     int i;
 
     while(1)
@@ -24,6 +30,9 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table
         
         printf("\n\n\t\t\t 1. Input User info\n");
         printf("\t\t\t 2. Print user info \n");
+        printf("\t\t\t 3. Find user data from name\n");
+        printf("\t\t\t 4. Find user data from phone number\n");
+        printf("\t\t\t 5. Delete user data\n");
         printf("\t\t\t 0. Back\n");
         printf(" - Select: ");
         scanf("%d", &select);
@@ -37,6 +46,32 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *table
             for(i=0; i<*table_count; i++){
                 print_user_list(dvd_user_table[i]);
             }
+            break;
+        case 3:
+            printf(" - 이름을 입력하세요 : ");
+            scanf("%s", find_name);
+            index_find_name = find_user_data_from_name(dvd_user_table, table_count, find_name);
+            if(index_find_name == NOT_FOUND){
+                printf("       - 찾는 데이터가 존재하지 않습니다. \n");
+            }else{
+                print_user_list(dvd_user_table[index_find_name]);
+            }
+            break;
+        case 4:
+            printf(" - 전화번호를 입력하세요 : ");
+            scanf("%s", find_phone_number);
+            index_find_phone_number = find_user_data_from_phone_number(dvd_user_table, table_count, find_phone_number);
+            if(index_find_phone_number == NOT_FOUND){
+                printf("       - 찾는 데이터가 존재하지 않습니다. \n");
+            }else{
+                print_user_list(dvd_user_table[index_find_phone_number]);
+            }
+            break;
+        case 5:
+            printf(" - 이름을 입력하세요 : ");
+            scanf("%s", find_name);
+            index_find_name = find_user_data_from_name(dvd_user_table, table_count, find_name);
+            delete_user_data(dvd_user_table, table_count, index_find_name);
             break;
         case 0:
             goto USER_FIN;
