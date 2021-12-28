@@ -107,7 +107,7 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INF
 USER_FIN:;
 }
 
-void yj_root_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *table_count)
+void yj_root_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *root_table_count, int *user_table_count)
 {
     int select = 0;
     int i;
@@ -126,18 +126,18 @@ void yj_root_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INF
         {
         case 1:
             system("clear");
-            input_dvd_data(dvd_root_table[*table_count]);
-            *table_count += 1;
+            input_dvd_data(dvd_root_table[*root_table_count]);
+            *root_table_count += 1;
             break;
         case 2:
             system("clear");
-            for(i=0; i<*table_count; i++){
+            for(i=0; i<*root_table_count; i++){
                 print_dvd_list(dvd_root_table[i]);
             }
             break;
         case 3: 
             system("clear");
-            
+            check_lotus_user(dvd_user_table, *user_table_count);
         case 0:
             system("clear");
             goto ROOT_FIN;
@@ -187,7 +187,7 @@ int main()
             break;
         case 2:
             system("clear");
-            yj_root_mode(dvd_user_table, dvd_root_table, &root_table_count);
+            yj_root_mode(dvd_user_table, dvd_root_table, &root_table_count, &user_table_count);
             break;
         case 0:
             goto MAIN_FIN;
