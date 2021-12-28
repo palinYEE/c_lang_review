@@ -107,7 +107,7 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INF
 USER_FIN:;
 }
 
-void yj_root_mode(YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *table_count)
+void yj_root_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *table_count)
 {
     int select = 0;
     int i;
@@ -118,6 +118,7 @@ void yj_root_mode(YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *table_count)
         
         printf("\n\n\t\t\t 1. Input DVD info\n");
         printf("\t\t\t 2. Print DVD info \n");
+        printf("\t\t\t 3. Check lotus user\n");
         printf("\t\t\t 0. Back\n");
         printf(" - Select: ");
         scanf("%d", &select);
@@ -134,6 +135,9 @@ void yj_root_mode(YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *table_count)
                 print_dvd_list(dvd_root_table[i]);
             }
             break;
+        case 3: 
+            system("clear");
+            
         case 0:
             system("clear");
             goto ROOT_FIN;
@@ -183,7 +187,7 @@ int main()
             break;
         case 2:
             system("clear");
-            yj_root_mode(dvd_root_table, &root_table_count);
+            yj_root_mode(dvd_user_table, dvd_root_table, &root_table_count);
             break;
         case 0:
             goto MAIN_FIN;
