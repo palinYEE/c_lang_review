@@ -164,6 +164,7 @@ ROOT_FIN:;
 int main()
 {
     int select_main_menu;
+    char file_name[100];
     int user_table_count = 0;
     int root_table_count = 0;
     int i;
@@ -187,7 +188,8 @@ int main()
         print_logo();
         
         printf("\n\n\t\t\t 1. USER MODE\n");
-        printf("\t\t\t 2. ROOD MODE \n");
+        printf("\t\t\t 2. ROOT MODE \n");
+        printf("\t\t\t 3. EXRTACTION INFORMATION \n");
         printf("\t\t\t 0. FINISH\n");
         printf(" - Select: ");
         scanf("%d", &select_main_menu);
@@ -201,6 +203,11 @@ int main()
             system("clear");
             yj_root_mode(dvd_user_table, dvd_root_table, &root_table_count, &user_table_count);
             break;
+        case 3:
+            system("clear");
+            printf(" - 저장할 파일의 이름을 입력하세요 : ");
+            scanf("%s", file_name);
+            
         case 0:
             goto MAIN_FIN;
             break;
