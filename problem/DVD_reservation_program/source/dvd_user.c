@@ -101,7 +101,7 @@ void input_rent_info(YJ_ST_MANAGE_TABLE *in, YJ_DVD_INFO_ST *dvd_root_table[MAX_
 
     for(i=0; i<MAX_DVD_NUM; i++){
         if(strcmp(temp->title, dvd_root_table[i]->title) == 0){
-            yj_now_time_str(temp->rental_date);
+            yj_setting_rental_time(temp);
             temp->lotus_check = "N";
             break;
         }

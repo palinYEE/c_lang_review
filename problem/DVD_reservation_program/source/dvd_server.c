@@ -31,6 +31,7 @@ void check_lotus_user(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *c
     int i;
     YJ_RENTAL_INFO_ST *rental_temp;
     YJ_DVD_USER_ST *user_temp;
+    time_t now_date = time(NULL);
 
     for(i=0; i<*count; i++){
         rental_temp = dvd_user_table[i]->rental_info_st;
@@ -42,6 +43,16 @@ void check_lotus_user(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], int *c
             // 빌린 날짜 형식은 다음과 같다. 
             // year/month/day ~ year/month/day+10
             // 오늘 날짜가 해당 기간 사이에 있으면 연채 아님. 이 밖에 있으연 연채.
+            if(rental_temp->rental_date_time_t <= now_date < rental_temp->return_date_time_t - 24*60*60){
+                printf(" - %s 님은 아직 대여기간입니다. \n", user_temp->user_name);
+            }
+            else if(rental_temp->return_date_time_t - 24*60*60 <= now_date <= rental_temp->return_date_time_t){
+                printf(" - %s 님은 24시간 내로 반납하셔야 합니다. \n", user_temp->user_name);
+            }
+            else{
+                printf(" - %s 님은 연채되셨습니다. \n", user_temp->user_name);
+                rental_temp->lotus_check = 'Y';
+            }
         }
     }
 }

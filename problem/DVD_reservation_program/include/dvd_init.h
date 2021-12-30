@@ -4,6 +4,7 @@
 #define MAX_CHAR_LENGTH 100
 #define MAX_TABLE_SIZE 100
 
+#include<time.h>
 
 typedef struct yj_dvd_user_st
 {
@@ -24,8 +25,10 @@ typedef struct yj_dvd_info_st
 typedef struct yj_rental_info_st
 {
     char *title;            // DVD 제목
-    char *rental_date;      // 대여 날짜
-    char *return_date;      // 반납 날짜
+    struct tm* rental_date;      // 대여 날짜
+    struct tm* return_date;      // 반납 날짜
+    time_t rental_date_time_t;   // 대여 날짜 time_t
+    time_t return_date_time_t;   // 반납 날짜 time_t
     char *lotus_check;      // 연채 여부
 }YJ_RENTAL_INFO_ST;
 
