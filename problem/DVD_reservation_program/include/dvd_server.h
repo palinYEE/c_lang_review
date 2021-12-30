@@ -4,7 +4,6 @@
 #include "dvd_init.h"
 #include "dvd_user.h"
 
-#define MAX_DVD_NUM 100
 
 /**
  * @brief DVD 데이터를 넣어주는 함수

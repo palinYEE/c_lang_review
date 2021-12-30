@@ -20,6 +20,6 @@ void yj_setting_rental_time(YJ_RENTAL_INFO_ST *out);
  * @param root_table_count dvd 정보 개수
  * @param file_name      저장할 파일 이름
  */
-void extraction_data_file(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *user_table_count, int *root_table_count,char *file_name)
+void extraction_data_file(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *user_table_count, int *root_table_count,char *file_name);
 #else
 #endif

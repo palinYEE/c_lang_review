@@ -121,8 +121,8 @@ void return_dvd(YJ_ST_MANAGE_TABLE *in)
 
     printf(" - %s 님이 %s를 반납하셨습니다.\n", user_temp->user_name, rental_temp->title);
 
-    rental_temp->title = '';
-    rental_temp->lotus_check = '';
+    rental_temp->title = NULL;
+    rental_temp->lotus_check = NULL;
     rental_temp->rental_date_time_t = 0;
     rental_temp->return_date_time_t = 0;
 }

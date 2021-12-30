@@ -18,7 +18,7 @@ void yj_setting_rental_time(YJ_RENTAL_INFO_ST *out)
 
     /* 현재 시간 셋팅 */
     yj_time_now_int = time(NULL);
-    yj_time_fin_int = yj_time_now_int + 10*24*60*60     // days * hours * minutes * second
+    yj_time_fin_int = yj_time_now_int + 10*24*60*60;     // days * hours * minutes * second
     yj_time_now_struct = localtime(&yj_time_now_int);
     yj_time_fin_struct = localtime(&yj_time_fin_int);
 
@@ -50,7 +50,7 @@ void extraction_data_file(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ
     fprintf(fp, "@                     DVD MANAGEMENT PROGRAM                   @\n");
     fprintf(fp, "@                                                              @\n");
     fprintf(fp, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
-    fprintf(fp, "\n - extract date : %d-%d-%d", now_time_st->tm_year+1900, now_time_st->tm_mon ,now_time_st->tm_mday)
+    fprintf(fp, "\n - extract date : %d-%d-%d", now_time_st->tm_year+1900, now_time_st->tm_mon ,now_time_st->tm_mday);
     fprintf(fp, " - File name : %s", file_name);
     fprintf(fp, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
     fprintf(fp, " -- USER DATA \n");
@@ -63,7 +63,7 @@ void extraction_data_file(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ
         if(rental_temp->lotus_check != ""){
             fprintf(fp, " - DVD Title : %s\n", rental_temp->title);
             fprintf(fp, " - DVD Rental Date : %d-%d-%d:%d-%d\n", rental_temp->rental_date->tm_year+1900, rental_temp->rental_date->tm_mon, rental_temp->rental_date->tm_mday, rental_temp->rental_date->tm_hour, rental_temp->rental_date->tm_min);
-            fprintf(fp, " - DVD Return Date : %d-%d-%d\n", return_date->rental_date->tm_year+1900, return_date->rental_date->tm_mon, return_date->rental_date->tm_mday);
+            fprintf(fp, " - DVD Return Date : %d-%d-%d\n", rental_temp->rental_date->tm_year+1900, rental_temp->rental_date->tm_mon, rental_temp->rental_date->tm_mday);
             fprintf(fp, " - DVD Lotus Check : %s", rental_temp->lotus_check);
         }
         fprintf(fp, "=======================\n");
@@ -73,7 +73,7 @@ void extraction_data_file(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ
     for(i=0; i<*root_table_count; i++){
         // dvd data extraction
         fprintf(fp, " - DVD Title : %s\n", dvd_root_table[i]->title);
-        fprintf(fp, " - DVD ISBN : %d\n", dvd_root_table[i]->ISBN)l
+        fprintf(fp, " - DVD ISBN : %d\n", dvd_root_table[i]->ISBN);
         fprintf(fp, " - DVD Genre : %s\n", dvd_root_table[i]->genre);
         fprintf(fp, " - release_year : %s\n", dvd_root_table[i]->release_year);
         fprintf(fp, "=======================\n");

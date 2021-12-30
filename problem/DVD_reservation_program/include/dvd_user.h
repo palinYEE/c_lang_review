@@ -59,5 +59,12 @@ int find_user_data_from_phone_number(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABL
  */
 void input_rent_info(YJ_ST_MANAGE_TABLE *in, YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM]);
 
+/**
+ * @brief dvd를 반납하는 함수
+ * 
+ * @param in 반납할 유저 구조체
+ */
+void return_dvd(YJ_ST_MANAGE_TABLE *in);
+
 #else
 #endif

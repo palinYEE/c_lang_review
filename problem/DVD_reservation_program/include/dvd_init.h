@@ -3,6 +3,7 @@
 
 #define MAX_CHAR_LENGTH 100
 #define MAX_TABLE_SIZE 100
+#define MAX_DVD_NUM 100
 
 #include<time.h>
 

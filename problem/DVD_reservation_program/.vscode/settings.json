@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.C": "c",
-        "dvd_user.h": "c"
+        "dvd_user.h": "c",
+        "yj_utils.h": "c"
     }
 }
