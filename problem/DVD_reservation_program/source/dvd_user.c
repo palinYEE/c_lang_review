@@ -111,3 +111,18 @@ void input_rent_info(YJ_ST_MANAGE_TABLE *in, YJ_DVD_INFO_ST *dvd_root_table[MAX_
     }
 }
 
+void return_dvd(YJ_ST_MANAGE_TABLE *in)
+{
+    YJ_DVD_USER_ST *user_temp;
+    YJ_RENTAL_INFO_ST *rental_temp;
+
+    user_temp = in->user_st;
+    rental_temp = in->rental_info_st;
+
+    printf(" - %s 님이 %s를 반납하셨습니다.\n", user_temp->user_name, rental_temp->title);
+
+    rental_temp->title = '';
+    rental_temp->lotus_check = '';
+    rental_temp->rental_date_time_t = 0;
+    rental_temp->return_date_time_t = 0;
+}

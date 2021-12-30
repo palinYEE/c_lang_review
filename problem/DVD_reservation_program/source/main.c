@@ -34,6 +34,7 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INF
         printf("\t\t\t 4. Find user data from phone number\n");
         printf("\t\t\t 5. Delete user data\n");
         printf("\t\t\t 6. Rental dvd\n");
+        printf("\t\t\t 7. Return dvd\n");
         printf("\t\t\t 0. Back\n");
         printf(" - Select: ");
         scanf("%d", &select);
@@ -96,6 +97,17 @@ void yj_user_mode(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INF
             input_rent_info(dvd_user_table[index_find_name], dvd_root_table);
             }
             break;
+        case 7:
+            system("clear");
+            printf(" - 반납할 사람의 이름을 입력하세요 : ");
+            scanf("%s", find_name);
+            index_find_name = find_user_data_from_name(dvd_user_table, table_count, find_name);
+            if(index_find_name == NOT_FOUND){
+                printf("    - 해당 이름은 존재하지 않습니다. \n");
+            }
+            else{
+                return_dvd(dvd_user_table[index_find_name]);
+            }
         case 0:
             system("clear");
             goto USER_FIN;
