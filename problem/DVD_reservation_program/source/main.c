@@ -207,7 +207,8 @@ int main()
             system("clear");
             printf(" - 저장할 파일의 이름을 입력하세요 : ");
             scanf("%s", file_name);
-            
+            extraction_data_file(dvd_user_table, dvd_root_table, &user_table_count, &root_table_count ,file_name);
+            printf(" --- 파일 저장 완료\n");
         case 0:
             goto MAIN_FIN;
             break;

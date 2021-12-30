@@ -16,9 +16,10 @@ void yj_setting_rental_time(YJ_RENTAL_INFO_ST *out);
  * 
  * @param dvd_user_table 유저 정보를 가지고 있는 구조체
  * @param dvd_root_table dvd 정보를 가지고 있는 구조체
+ * @param user_table_count 유저 정보 개수
+ * @param root_table_count dvd 정보 개수
  * @param file_name      저장할 파일 이름
  */
-void extraction_data_file(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], char *file_name)
-
+void extraction_data_file(YJ_ST_MANAGE_TABLE *dvd_user_table[MAX_TABLE_SIZE], YJ_DVD_INFO_ST *dvd_root_table[MAX_DVD_NUM], int *user_table_count, int *root_table_count,char *file_name)
 #else
 #endif
