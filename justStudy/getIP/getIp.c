@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
         return -1;
     }
     memset(host, 0, sizeof(host));
-    for(ifa = ifaddr; ifa != NULL; ifa = ifaddr->ifa_next) {
+    for(ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {
         if(ifa->ifa_addr == NULL) {
             continue;
         }
