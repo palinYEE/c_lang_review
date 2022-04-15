@@ -2,3 +2,4 @@
 
 * 포인터 : [pointer.c](pointer/pointer.c)
 * 현재 파일 목록 출력: [list.c](file_list/list.c)
+* IP 얻는 방법: [getIP.c](getIP/getIP.c)
