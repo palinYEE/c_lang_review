@@ -36,6 +36,9 @@ void test_sig_handler_2(int signum){
     _exit(127);
 }
 
+/* TODO: vsyslog example */
+
+
 int main(int argc, char **argv){
     signal(SIGINT, sig_handler);
     signal(SIGILL, sig_handler);
