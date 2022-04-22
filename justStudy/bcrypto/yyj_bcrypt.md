@@ -69,3 +69,4 @@ NTSTATUS BCryptCloseAlgorithmProvider(
 
 * https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/ 
 * https://docs.microsoft.com/ko-kr/windows/win32/seccng/typical-cng-programming
+* https://hizstory.tistory.com/45
