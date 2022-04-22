@@ -7,3 +7,4 @@
 * String split 방법: [string\_split](string_split/string_split.c)
 * syslog 예제 : [yyj_syslog.c](syslog/yyj_syslog.c)
 * /dev/random 으로 난수 추출 예제 : [yyj_dev_random.c](dev_random/yyj_dev_random.c)
+* bcrypt으로 난수 추출 예제 (Window): [yyj_bcrypt.c](bcrypto/yyj_bcrypto.c) 
