@@ -2,16 +2,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+ * output
+   original values: 123 Hello, world!
+   new values: 123 Hello, world!
+*/
+
+/* TEST Structure */
 typedef struct A {
     int a;
     char *str;
-} test_struct_t;
+} test_struct_t; 
 
+/* |- A.str -|- sizeof(A.str) -|- A.a -| */
 char *serialize(test_struct_t t) {
     int str_len = strlen(t.str);
 
     int size = 2 * sizeof(int) + str_len;
-    char *buf = malloc(sizeof(char) * (size+1));
+    char *buf = malloc(sizeof(char) * (size+1)); /*  Q. 여기서 malloc을 해줬는데 그럼 free는 언제 해주는건가. */
 
     memcpy(buf, &t.a, sizeof(int));
     memcpy(buf + sizeof(int), &str_len, sizeof(int));
@@ -41,7 +49,7 @@ int main() {
 
     test_struct_t t;
     t.a = 123;
-    t.str = malloc(strlen(str) + 1);
+    t.str = malloc(strlen(str) + 1); /* 해당 메모리도 free 해주는 부분이 없음. */
     strcpy(t.str, str);
     printf("original values: %d %s\n", t.a, t.str);
 
