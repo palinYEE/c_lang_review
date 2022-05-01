@@ -9,3 +9,4 @@
 * /dev/random 으로 난수 추출 예제 : [yyj_dev_random.c](dev_random/yyj_dev_random.c)
 * bcrypt으로 난수 추출 예제 (Window): [yyj_bcrypt.c](bcrypto/yyj_bcrypto.c) 
 * mutex 사용 예제 : [yyj_mutex.c](mutex/yyj_mutex.c)
+* struct serialize 예제 : [serialize.c](struct_serialize/serialize.c)
